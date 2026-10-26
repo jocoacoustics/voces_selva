@@ -1,4 +1,4 @@
-# GitHub Pages · Narupa v0.3.3
+# GitHub Pages · Vaces de la Selva Narupa v0.3.3
 
 https://jocoacoustics.github.io/voces_selva/
 
