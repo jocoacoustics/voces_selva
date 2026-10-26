@@ -1,11 +1,11 @@
 {
   "name": "Narupa BirdMixIT",
-  "source_html": "/content/drive/MyDrive/Desarrollo/BirdMixIT/Ensayo_Narupa/reports/BirdMixIT_Narupa.html",
+  "version": "0.3.3",
+  "single_page": true,
   "real_model_run": true,
-  "run_id": "20261026T042150Z",
+  "run_id": "20261026T045439Z",
   "source_channels": 12,
   "measured_source_overlays": 12,
-  "version": "0.3.2",
   "ensemble_independiente": true,
-  "visualizador_sha256": "b2471a8c626d34164f5c81fc560a6c9b59328e42f6cf3e1a6212f7dec4b425f7"
+  "index_sha256": "68eaf93854e7211c0ebc2839f0a585f1a8e765dda5c6f37fdf851b1f776216bd"
 }

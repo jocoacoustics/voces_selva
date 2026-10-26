@@ -1,12 +1,12 @@
-# GitHub Pages · Narupa v0.3.2
+# GitHub Pages · Narupa v0.3.3
 
-Esta carpeta **sí está incluida** en el ZIP maestro.
+**Un solo `index.html`** incorpora la portada animada original de CC y el visualizador. Durante la carga no hay scrollbar ni segundo logo. El estado de preparado depende de imágenes, capas espectrales, metadatos de audio y fin de animación CSS original; no hay temporizador que decida revelar la interfaz.
 
-- `index.html`: portada visual CC original (animaciones intactas), con iframe precargando el visualizador y traspaso por confirmación de preparación, sin temporizador fijo.
-- `visualizador.html`: vista previa inicial; reemplazada automáticamente por la salida científica del notebook.
-- `preview.jpg`: imagen de redes.
-- `assets/`: logo de respaldo.
-- `.nojekyll`: habilita archivos estáticos.
-- `PUBLICACION.json`: **solo tras inferencia auténtica** de ambos checkpoints.
+- `index.html`: vista previa autónoma inicial; tras inferencia real pasa a ser la versión científica.
+- `visualizador.html`: redirección de compatibilidad a `index.html` para enlaces previos.
+- `preview.jpg`: imagen social.
+- `assets/logo-jocotoco-respaldo.png`: respaldo si falla SVG original.
+- `.nojekyll`: configuración estática.
+- `PUBLICACION.json`: solo se genera al concluir inferencia auténtica 8F+4F.
 
-La publicación exige `python scripts/verificar_publicacion.py --root . --strict`; el workflow GitHub Actions la valida antes de desplegar. Si falta el manifiesto real, **no se publica**.
+Para publicar: ejecutar el notebook completo y `python scripts/verificar_publicacion.py --root . --strict`. El workflow rechaza la maqueta inicial.
