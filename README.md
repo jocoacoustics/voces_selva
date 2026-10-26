@@ -1,6 +1,8 @@
 # GitHub Pages · Narupa v0.3.1
 
-Esta carpeta **sí está incluida** en el ZIP maestro.
+https://jocoacoustics.github.io/voces_selva/
+
+**Este directorio existe desde la entrega, pero su `visualizador.html` es inicialmente la maqueta.** No publiques el sitio como separación real hasta que el notebook ejecute ambos modelos y genere `PUBLICACION.json`.
 
 - `index.html`: portada CC original (animaciones/temporizador intactos); `prefetch` de la segunda página.
 - `visualizador.html`: vista previa inicial; reemplazada automáticamente por la salida científica del notebook.
