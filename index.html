@@ -80,18 +80,78 @@
     100% { transform:scale(1.18); opacity:.28; }
   }
 </style>
+<style id="birdmix-seamless-handoff-v032">
+  /* La primera hoja CSS y la animación SVG se conservan letra por letra de CC. */
+  #birdmixViewer{position:fixed;inset:0;z-index:1;width:100%;height:100%;border:0;background:#fff}
+  #birdmixCover{position:fixed;inset:0;z-index:2;display:grid;place-items:center;
+    background:radial-gradient(circle at 50% 35%, #f8fdfa 0%, var(--bg1) 38%, var(--bg2) 100%);
+    opacity:1;visibility:visible;transition:opacity .35s ease,visibility .35s ease}
+  body.birdmix-handoff #birdmixCover{opacity:0;visibility:hidden;pointer-events:none}
+  #birdmixEntryError{position:absolute;top:calc(50% + 155px);left:5%;width:90%;
+    font:600 13px/1.5 system-ui,sans-serif;color:#a03929;text-align:center}
+  #birdmixEntryError[hidden]{display:none}
+</style>
 <script>
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      window.location.replace('visualizador.html');
-    }, 1150);
+(() => {
+  'use strict';
+  const READY='narupa-visualizador-ready-v032';
+  const ERROR='narupa-visualizador-error-v032';
+  let accepted=false;
+  let resourcesReady=false;
+  let ccAnimationFinished=false;
+  function maybeReveal(){
+    if(accepted || !resourcesReady || !ccAnimationFinished)return;
+    accepted=true;
+    const frame=document.getElementById('birdmixViewer');
+    requestAnimationFrame(()=>document.body.classList.add('birdmix-handoff'));
+    document.getElementById('birdmixCover')?.setAttribute('aria-hidden','true');
+    frame.removeAttribute('tabindex');
+    frame.focus({preventScroll:true});
+  }
+  function accept(event){
+    const frame=document.getElementById('birdmixViewer');
+    if(!frame || event.source!==frame.contentWindow)return;
+    // Aceptar únicamente mensajes de nuestro propio visualizador.
+    if(event.origin!==window.location.origin)return;
+    if(!event.data || typeof event.data!=='object')return;
+    if(event.data.type===ERROR){
+      const message=document.getElementById('birdmixEntryError');
+      if(message)message.hidden=false;
+      return;
+    }
+    if(event.data.type!==READY)return;
+    resourcesReady=true;
+    maybeReveal();
+  }
+  window.addEventListener('message',accept);
+  function requestStatus(){
+    const frame=document.getElementById('birdmixViewer');
+    if(!frame?.contentWindow)return;
+    frame.contentWindow.postMessage({type:'narupa-visualizador-status-v032'},window.location.origin==='null'?'*':window.location.origin);
+  }
+  window.addEventListener('DOMContentLoaded',()=>{
+    // Respetar la animación CC completa, sin utilizar reloj fijo para revelar.
+    const logo=document.querySelector('#birdmixCover .logo');
+    const animations=logo ? logo.getAnimations() : [];
+    Promise.all(animations.map(a=>a.finished.catch(()=>{}))).then(()=>{
+      ccAnimationFinished=true;
+      maybeReveal();
+    });
+    const frame=document.getElementById('birdmixViewer');
+    if(frame){frame.addEventListener('load',requestStatus);frame.addEventListener('error',()=>{
+      document.getElementById('birdmixEntryError').hidden=false;
+    });}
   });
+})();
 </script>
-<link rel="prefetch" href="visualizador.html" as="document">
 </head>
 <body>
-  <div class="stage" aria-hidden="true">
-    <img class="logo" src="https://www.jocotoco.org.ec/dct/tmp_adjuntos/noEn/000/043/MatrizDatos_1717041034logoJocotoco-green.svg" onerror="this.onerror=null;this.src='assets/logo-jocotoco-respaldo.png'" alt="" />
+  <iframe id="birdmixViewer" title="Visualizador bioacústico de Narupa" src="visualizador.html" loading="eager" tabindex="-1"></iframe>
+  <div id="birdmixCover" role="status" aria-label="Preparando el visualizador de Narupa">
+    <div class="stage" aria-hidden="true">
+      <img class="logo" src="https://www.jocotoco.org.ec/dct/tmp_adjuntos/noEn/000/043/MatrizDatos_1717041034logoJocotoco-green.svg" onerror="this.onerror=null;this.src='assets/logo-jocotoco-respaldo.png'" alt="" />
+    </div>
+    <p id="birdmixEntryError" hidden>No se pudo preparar el visualizador. Comprueba la conexión y vuelve a cargar la página.</p>
   </div>
 </body>
 </html>
