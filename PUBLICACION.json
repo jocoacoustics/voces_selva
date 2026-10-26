@@ -1,11 +1,11 @@
 {
   "name": "Narupa BirdMixIT",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "single_page": true,
   "real_model_run": true,
-  "run_id": "20261026T051029Z",
+  "run_id": "20261026T131642Z",
   "source_channels": 12,
   "measured_source_overlays": 12,
   "ensemble_independiente": true,
-  "index_sha256": "210f4bb22408b04c5d5e1cac928bc3d6574312c9a3f69b6b0159c25024de8856"
+  "index_sha256": "6ebe156492ee79f82b56de01be3741c22102c37af64d7af01930c71e7a0a67bd"
 }
