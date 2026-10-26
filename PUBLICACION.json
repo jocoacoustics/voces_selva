@@ -1,11 +1,15 @@
 {
-  "name": "Narupa BirdMixIT",
-  "version": "0.3.5",
+  "name": "Las voces escondidas de la selva",
+  "version": "0.3.10",
   "single_page": true,
   "real_model_run": true,
-  "run_id": "20261026T131642Z",
+  "run_id": "20261026T160902Z",
   "source_channels": 12,
   "measured_source_overlays": 12,
   "ensemble_independiente": true,
-  "index_sha256": "6ebe156492ee79f82b56de01be3741c22102c37af64d7af01930c71e7a0a67bd"
+  "index_sha256": "8b589b67a5a1efcf2ec66aaba99281b9f8a0d915903d98565ff26f0ffee5ae1a",
+  "model_sha256": "dc954c6eadd5d5aab0de5cda93e7f3173990daf10c4468d82a54bf1f684b56d3",
+  "runtime_sha256": "8ad24f232d96c197d51b0817796f3672ac3ad31c19dd77351e1d1a768ee1b254",
+  "splash_svg_sha256": "39d5ff94e90506e863f9b60d0e45a0cfb15dc9d146a692b62e06a4e2e380194c",
+  "header_svg_sha256": "3b6a7c62c89c4c5c4baaca909a3464191269abb8d41fb663cd32db5835100190"
 }
