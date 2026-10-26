@@ -1,12 +1,12 @@
-# GitHub Pages · Narupa v0.2.6
+# GitHub Pages · Narupa v0.3.1
 
-**Este directorio existe desde la entrega, pero su `visualizador.html` es inicialmente la maqueta.** No publiques el sitio como separación real hasta que el notebook ejecute ambos modelos y genere `PUBLICACION.json`.
+Esta carpeta **sí está incluida** en el ZIP maestro.
 
-`index.html`: portada CC con animación y redirección idénticas, sin modificaciones al CSS.  
-`visualizador.html`: reemplazado automáticamente por `pipeline.run()` después de inferencia real.  
-`preview.jpg`: imagen social original de CC.  
-`assets/`: logo Jocotoco de respaldo.
+- `index.html`: portada CC original (animaciones/temporizador intactos); `prefetch` de la segunda página.
+- `visualizador.html`: vista previa inicial; reemplazada automáticamente por la salida científica del notebook.
+- `preview.jpg`: imagen de redes.
+- `assets/`: logo de respaldo.
+- `.nojekyll`: habilita archivos estáticos.
+- `PUBLICACION.json`: **solo tras inferencia auténtica** de ambos checkpoints.
 
-Validar desde la raíz del proyecto: `python scripts/verificar_publicacion.py --root . --strict`.
-
-Si se usa `Settings → Pages → GitHub Actions`, el workflow comprueba el sitio antes de desplegarlo.
+La publicación exige `python scripts/verificar_publicacion.py --root . --strict`; el workflow GitHub Actions la valida antes de desplegar. Si falta el manifiesto real, **no se publica**.
